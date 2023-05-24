@@ -37,3 +37,23 @@ OS에 가해지는 부하가 적고 매우 빠르고 디스크 공간 차지가 
 Docker 설치하기!!
 https://docker.com/로 접속하고
 https://docs.docker.com/get-docker/로 들어가 설치 운영체제에 맞는 것을 선택하기
+
+windows 10의 경우 hyper-v, bios에서 가상머신 지원 활성화(SVM)를 하고 WSL을 깔고 난 뒤에 docker를 설치
+Linux의 경우는 docker engine을 깔기만 하면 끝
+
+Docker Engine- Docker Desktop, Docker Hub, Docker Compose
+
+Kubernetes를 지원하기 위해 쓰는 것...
+
+docker로 기본적으로 이미지를 만들어서 container에서 실행하는 것 ...
+image를 만들려면
+
+IDE(개발 툴킷)에서 terminal을 열어 docker build .을 입력할 것(물론 해당 코드와 dokerfile이 있는 폴더에서 실행해야 함)
+실행중인 docker를 닫으려면
+새 터미널을 열고 docker ps로 현재 실행중인 docker의 목록을 볼 수 있음
+해당 목록의 현재 실행중인 docker의 이름을 얻어
+docker stop docker이름을 터미널에서 실행하면 잠시의 시간 경과후 docker의 실행이 종료 됨
+
+Foundation Section : Images - Container, Data-Volumes(in Container), Container -Networking
+RealLife: Multi-Container Projects, Use Docker Compose, Utility Containers, Deploying Docker Containers
+Kubernetes: Kubernetes-Basics, Kubernetes-Data-Vlumes, Kubernetes-Networking, Deploying Kubernetes Cluster
