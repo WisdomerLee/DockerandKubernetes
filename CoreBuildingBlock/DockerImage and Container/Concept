@@ -1,0 +1,22 @@
+Image와 Container가 대체 무엇??
+
+Docker는 Container를 만들고 관리하는 도구
+Container : 응용 프로그램의 작은 패키지 단위
+Container : 내부에는 실행환경과 그것을 실행하는 단위 프로그램
+Image: Container에 대한 청사진 밑그림, 얼개
+Image: code+ 실행시 필요한 도구가 설명되어 있음
+
+Image를 기반으로 Container가 여럿 실행될 수 있음
+
+Docker Hub라는 곳에서 이미 Container의 실행 조건이 담긴 Image들이 많이 있음
+
+terminal에서 docker ps -a를 실행하면 실행되었던 모든 container를 볼 수 있음 (이미 끝난 것들 포함)
+
+예를 들어 Nodejs라는 Image를 실행시키면
+docker run node
+docker로 실행시켜도 container는 분명히 생성되어 돌아가지만 대화형 인터페이스는 사용자에게 노출되지 않음
+docker run -it node라는 형태로 사용자에게 대화형 인터페이스를 노출시킴
+
+control+C를 누르면 terminal에서 실행되는 container가 종료됨
+
+프로젝트 폴더에 들어가서 Dockerfile을 생성하기 : 어느 프로그램 언어를 선택해도 마찬가지!
