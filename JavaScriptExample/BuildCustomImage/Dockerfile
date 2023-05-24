@@ -21,3 +21,4 @@ CMD ["node", "server.js"]
 
 #docker를 통해 Image를 build시키고 그냥 docker run "빌드된 ID"로 실행하면 80포트에 접근이 안 됨
 #docker에서 실행할 때 docker run -p 컴퓨터포트아무숫자:80(EXPOSE에 쓰인 숫자) "빌드된 ID"
+#만약 ID가 있으면 해당 이미지는 ID에 쓰인 대로 생성되게 됨 > 없으면 숫자형태의 ID가 생성
