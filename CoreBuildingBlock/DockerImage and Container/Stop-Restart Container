@@ -1,0 +1,35 @@
+IDE의 terminal로 들어가서 terminal에 명령어를 치게 됨
+
+docker --help를 치게 되면 >> docker로 실행할 수 있는 모든 기본 명령어가 튀어나옴
+
+docker의 핵심 기능은 container의 관리
+docker ps : 현재 실행중인 container의 목록을 보여주는 명령어
+docker ps -a : 실행이 종료되었던 container들까지 포함하여 목록을 보여주는 명령어
+
+코드가 그대로고 내용이 바뀌지 않았다면 해당 내용이 다시 필요할 때 종료되었던 콘테이너를 다시 실행시킬 필요가 있음 : 굳이 새 컨테이너를 만들 필요 없이
+docker start "시작할 종료되었던 컨테이너 이름(혹은 ID)"
+위와 같이 실행하면 terminal을 종료하지 않고 컨테이너가 실행됨 background에서 실행 detach mode
+docker run으로 실행하면 terminal에 추가 입력이 불가능한 상태로 container가 실행 : foreground 실행 attach mode
+
+foreground로 실행하여 container가 attach mode라는 건 컨테이너의 결과를 볼 수 있다는 것
+
+docker run -p 8000:80 -d "컨테이너 ID"
+위와 같이 실행하면 : detach mode로 컨테이너가 실행됨
+
+이미 실행중인 container를 terminal로 다시 붙일 수도 있음
+docker ps로 실행중인 container의 id, 이름을 확인한 뒤
+docker attach "실행중인 container 이름"
+으로 terminal에 container를 붙일 수 있음
+
+docker start "실행할 컨테이너 ID/이름"
+으로 detach mode로 실행한 뒤에
+
+docker logs "실행중인 container ID/이름"으로 하게 되면
+해당 container에서 출력되었던 log를 terminal에 띄움
+
+docker logs -f "실행중인 container ID/이름"
+으로 실행하면
+해당 container에서 출력되었던 로그가 찍힘과 함께 해당 container에 연결됨
+
+docker start -a "컨테이너 ID"
+로 하면 docker run으로 실행한 것과 같은 결과를 얻음
