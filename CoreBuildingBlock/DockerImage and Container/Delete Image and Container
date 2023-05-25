@@ -1,0 +1,29 @@
+docker로 실행한 container들은 목록이 계속 쌓임
+이제 더는 필요 없는 container들을 지워야 할 필요가 있음
+
+docker ps로 현재 실행중인 container를 확인하고
+
+docker rm "제거할 컨테이너 이름(ID)"로 처리할 수 있음
+그러나 현재 실행중인 container는 위의 명령으로 지우려고 시도하면 에러를 얻음
+
+docker stop "멈출 컨테이너 이름(ID)"로 멈추고
+docker ps -a로 실행이 멈춘 container들도 목록으로 불러와서
+
+아래와 같이 처리하면
+docker rm "지울 container 이름(ID)" (더 지울 것이 있다면 빈칸 하나를 사이에 두고 container의 이름을 줄줄이 쓰면 됨)
+
+혹은 docker container prune을 실행하여 모든 멈춘 container를 한 번에 지울 수도 있음
+
+docker images로 우리가 만든 image를 볼 수 있음
+이미지를 지우려면 아래와 같이 
+docker rmi "지울 image ID" (docker rm과 쓰임이 같음)
+로 처리하면 docker에 caching 되었던 layer들도 같이 제거가 됨
+
+또한 image를 기반으로 실행되는 container가 있으면 그 container들부터 모두 멈추고 나서 image를 지울 수 있음
+
+docker image prune 명령어를 쓰면 더이상 쓰지 않는 모든 이미지를 지우게 됨
+
+docker run --rm "이미지 ID" 로 실행하면...> container의 실행이 끝나면 자동으로 제거하게 됨
+
+docker image inspect "이미지 ID" 를 실행하면
+image의 기본 정보들을 볼 수 있음
