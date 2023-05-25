@@ -1,0 +1,20 @@
+선택사항이긴 하지만
+Image에 태그를 달고
+container에 이름을 달면
+찾고 실행하거나 종료하거나 할 때 매우 유용하므로
+
+container에 이름 달기
+
+docker run --rm --name "container의 이름" "Image id"
+
+image의 Tag
+repository라고도 부르는 image의 이름 name : tag
+name : 그룹을 지정, 특정 상황에 맞는 형태의 그룹 지정
+tag: 그룹 중에 특정 이미지를 가리킬 경우(버전?등)
+
+이름을 goals, tag로 latest인 iamge가 생성됨tag부분은 영문자 혹은 숫자가 될 수 있음
+docker build -t goals:latest .
+
+만약 tag된 이미지들을 포함하여 모든 이미지를 지우고 싶다면
+docker image prune -a를 하면 빌드된 모든 이미지가 지워짐
+
