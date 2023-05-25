@@ -1,1 +1,23 @@
+꼭 server - client 프로그램 말고도 일반 프로그램도 container로 돌릴 수 있음
+python코드 예시로 
+docker build . 로 image를 만들고
 
+실행하면 Error가 나옴...
+
+사용자의 입,출력이 필요한 프로그램에서 container로 올려 실행하게 되면 에러가 나오는데
+docker run -i "컨테이너 ID(이름)" : container를 interactive mode로
+docker run -t "컨테이너 ID(이름)" : container에서 출력가능한 terminal을 생성
+
+docker run -i -t "컨테이너 ID(이름)" 혹은 docker run -it "컨테이너 ID(이름)"
+으로 실행하면
+
+container가 실행되면서 terminal에 container가 만든 임의의 terminal을 통해 입출력을 하게 됨
+
+docker start "컨테이너 이름(ID)"로 실행하면
+입출력이 되지 않는 형태로 background 형태로 임의로 실행됨
+
+docker start -a "컨테이너 이름(ID)"로 실행하면
+입력을 한 번만 받고 그 다음에 terminal이 대기 상태가 됨...
+
+docker start -a -i "컨테이너 이름(ID)"로 실행하면
+입출력을 처리 받아 정상 동작 함
