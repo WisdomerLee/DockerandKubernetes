@@ -36,7 +36,12 @@ app.post('/create', async (req, res) => {
     if (exists) {
       res.redirect('/exists');
     } else {
-      await fs.rename(tempFilePath, finalFilePath);
+      //아래의 rename은 다중 파일 접속 경로에서는 지원하지 않음 : 볼륨으로 파일을 저장하기 위해 변경해야할 사항
+      //await fs.rename(tempFilePath, finalFilePath);
+      //아래와 같이 파일을 복사한 뒤에
+      await fs.copyFile(tempFilePath, finalFilePath);
+      //수동으로 파일을 삭제...
+      await fs.unlink(tempFilePath);
       res.redirect('/');
     }
   });
