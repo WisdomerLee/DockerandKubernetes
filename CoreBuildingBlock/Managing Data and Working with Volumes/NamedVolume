@@ -1,0 +1,29 @@
+외부로 데이터를 저장하는 두 형태
+
+도커가 관리하는 볼륨, 개발자가 관리하는 Bind Mounts
+
+볼륨은 익명 볼륨(Anonymous volumes)과 이름있는 볼륨(Named volumes)으로 나뉨
+도커는 폴더, 경로를 실제 기기에 설치하지만 개발자는 이 폴더가 어디 있는지 알 수 없음
+
+docker volume 커맨드를 통해 관리함
+
+docker volume ls : docker가 관리하는 현재 생성된 볼륨들을 목록으로 보여줌
+
+익명 볼륨은 컨테이너가 끝나면 같이 사라짐
+하지만 이름있는 볼륨은 컨테이너가 끝나도 유지됨
+해당 볼륨은 직접 수정할 수 없음
+
+docker로 컨테이너를 실행할 때 볼륨의 이름을 직접 지정해야 함 > docker file에 생성한 volume은 익명 볼륨이 됨
+
+아래의 경우가 볼륨을 붙이는 경우 run -v "볼륨이름:이미지 내부에서 복사할 폴더 경로"
+docker run -v feedback:/app/feedback "실행할 바탕이 될 이미지 이름"
+
+docker run --rm -d -p 3000:80 -v feedback:/app/feedback --name feedback-app "실행할 바탕이 될 이미지 이름"
+
+만약 docker로 실행할 때 --rm을 붙이지 않고 실행하게 되면
+익명의 volume은 컨테이너를 실행할 때마다 새로 생성되어 쌓이게 됨
+더이상 쓰지 않는 익명의 volume은
+
+docker volume rm "지울 볼륨 이름"
+
+혹은 docker volume prune으로 익명 볼륨을 한 번에 지울 수 있음
