@@ -1,0 +1,44 @@
+환경 변수...
+arguments and environment variables
+
+docker는 build-time arguments와 runtime environment variables를 지원함
+
+arg 같은 경우
+docker file 내부에 지정할 수 있고 cmd나 application code로 접근이 안 됨
+
+docker build
+--build-arg와 같은 형태로 이미지를 만들 때 지정할 수 있음
+
+env의 경우
+docker file 내부 지정 가능, application code에서도 접근이 가능함
+
+실행할 때 환경변수를 설정하고 싶다면
+docker run --env와 같은 형대로 쓰게 됨
+
+동적으로 설정할 수 있기 때문에 이미지와 컨테이너를 다양하게 만들 수 있음....
+
+
+docker file내부에
+
+ENV PORT 80 으로 선언하면 PORT라는 전역변수가 80으로 쓰이게 됨
+
+그리고 위와 같은 환경변수를
+docker file 내부에서
+EXPOSE $PORT 라는 형태로 $를 앞에 붙여 이것이 환경변수임을 docker에 알리게 됨
+
+docker run --env PORT=8000과 같이 설정된 PORT값을 8000으로 바꿀 것을 설정할 수 있음
+이렇게 설정해두면 이미지를 바꿀 필요(삭제하고 다시 빌드할 필요) 없이 실행할 때의 값으로 환경변수가 바뀌게 됨
+
+만약 환경변수가 여럿이라면
+docker run -e PORT=8000 -e SHORT=300 
+과 같은 식으로 설정할 수 있음
+
+혹은 프로젝트의 환경 설정이 저장된 파일을 만들 수도 있는데
+docker로 build할 프로젝트 폴더 안에
+
+.env파일을 만들고
+그 내부에 지정할 환경변수를 만들기
+해당 .env파일을 만들었으면
+
+docker run --env-file ./.env 와 같이 실행하면 환경변수를 해당 파일에서 읽어와서 적용하게 됨
+
