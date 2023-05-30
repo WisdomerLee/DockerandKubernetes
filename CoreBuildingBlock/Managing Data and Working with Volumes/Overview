@@ -2,3 +2,8 @@ docker와 image, container에 대한 개념을 알았으니..
 이제 해당 container나 image등에서 이미 존재하는 data를 읽고 쓰는 것을 해보기
 폴더와 데이터에 접근할 수 있는 방법과 볼륨에 대한 개념을 이해하기
 파라미터, 환경 파라미터 등도 다루게 됨
+
+
+docker run -v /app/data > 익명 volume
+docker run -v data:/app/data > named volume
+docker run -v /absolutepath/to/code:/app/data > bind mount
