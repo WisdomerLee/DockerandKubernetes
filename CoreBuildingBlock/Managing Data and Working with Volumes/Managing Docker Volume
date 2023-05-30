@@ -1,0 +1,23 @@
+Volume을 관리하기
+
+docker volume --help
+
+docker volume ls : 볼륨의 목록을 띄움
+
+volume을 docker가 관리한다는 건 container를 실행할 때 해당 volume이 없으면 자동으로 생성하고 컨테이너가 종료되면 삭제됨을 뜻함
+대개는 직접 만들지 않으나 이렇게도 만들 수 있는 사실을 알고 있으면 좋음
+docker volume create "생성될 볼륨 이름"
+
+docker volume inspect "검사할 볼륨 이름"
+이것으로 볼륨의 정보를 읽으면
+Mountpoint라고 해서 경로가 나오게 되는데
+해당 경로는 실제 기기에 저장된 경로가 아닌
+가상 머신에 깔리는 경로이기 때문에 OS등에서 접근할 수 없음
+
+임의로 볼륨을 지울 수도 있음
+docker volume rm "지울 볼륨 이름"
+
+만약 컨테이너가 실행중이고 해당 볼륨을 쓰고 있다면 해당 볼륨을 지우려면
+컨테이너를 끝내고 볼륨을 지워야 함
+
+docker volume prune : 더이상 쓰지 않는 모든 볼륨을 지움
