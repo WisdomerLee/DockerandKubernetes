@@ -1,0 +1,8 @@
+container들간 데이터를 주고 받게 하려면...?
+혹은 container와 컴퓨터 기기 간에 데이터를 주고 받으려면...?
+container는 기본적으로 독립적으로 돌아가므로 데이터를 주고받으려면
+
+container에서 다른 http로 접속을 하게 되려면...?
+
+container와 외부 network
+container와 network를 연결하기
