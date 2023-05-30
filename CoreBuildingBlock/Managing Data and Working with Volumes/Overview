@@ -4,6 +4,13 @@ docker와 image, container에 대한 개념을 알았으니..
 파라미터, 환경 파라미터 등도 다루게 됨
 
 
+container는 데이터를 읽고 쓸 수 있고 volume은 데이터 저장에 쓰이고 bind mounts는 변경사항이 container에 즉시 반영
+
+container는 기본적으로 데이터를 읽고 쓸 수 있으나 container가 제거되면(멈춤 상태 아니고 완전히 제거된 경우) 해당 데이터도 같이 사라짐
+volume은 docker가 관리하고 container에서 접근 가능 익명 volume은 container가 사라지면 같이 사라짐
+이름붙은 volume은 container가 사라지고도 남아있어 다른 container가 시작되어도 해당 데이터에 접근이 가능함
+
+도커의 커맨드로 아래와같이 처리
 docker run -v /app/data > 익명 volume
 docker run -v data:/app/data > named volume
 docker run -v /absolutepath/to/code:/app/data > bind mount
