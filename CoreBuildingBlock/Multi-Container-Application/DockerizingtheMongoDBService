@@ -1,0 +1,7 @@
+개발 툴의 터미널
+docker container prune : 동작이 끝난 모든 컨테이너를 모두 삭제함
+
+docker run --name mongodb --rm -d -p 27017:27017 mongo
+
+위의 커맨드를 입력하면 docker hub의 mongo 이미지를 그대로 설치해오게 됨
+control +c를 누르면 터미널에서 container를 끝내게 됨
