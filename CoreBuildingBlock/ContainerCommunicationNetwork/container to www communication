@@ -43,3 +43,16 @@ docker run --name favorites --network favorites -d --rm -p 3000:3000 favorite-no
 로 실행 : 같은 네트워크 이름으로 실행해야 하는 것을 잊지 말 것
 
 컨테이너끼리의 network를 구성하는 경우에는 포트를 노출할 필요가 없음...
+
+docker network는 서로 다른 종류의 driver를 지원할 수도 있음
+driver는 network를 생성할 때 선택사항으로 지정할 수 있음
+
+docker network create --driver bridge "생성할 네트워크 이름"
+으로 커맨드를 실행하면 bridge 드라이버를 사용하게 할 수 있음
+
+host : container와 호스트 시스템을 제거..
+overlay: 여러 docker daemons > 도커가 서로 다른 기기에서 동작할 때 그 다른 기기에서 동작하는 도커를 연결할 수 있음 "Swarm"모드일 때 동작
+macvlan: container의 Mac address를 수동으로 설정할 수 있음
+none: 모든 네트워크를 불가능하게 ..
+third-party plugins : 다른 플러그인을 설치하여 쓸 수 있음
+
