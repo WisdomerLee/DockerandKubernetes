@@ -1,0 +1,17 @@
+개발 툴의 터미널
+docker images prune -a : 모든 기존의 이미지를 지움
+
+backend쪽의 image를 만들기 위해
+docker build -t goals-node .
+
+위의 커맨드를 입력 : 물론 소스 코드의 접속 코드의 주소를 기기의 포트 주소가 아닌 docker내부의 주소로 변경하여 이미지를 만들어야 함 : 그렇지 않으면 접속 거부 에러 등이 발생함
+
+이미지가 성공적으로 만들어졌으면
+
+docker run --name goals-backend --rm -d goals-node
+위의 커맨드를 입력하면 빌드된 이미지로 실행됨
+
+그런데 위와 같이 실행하면 데모 앱의 frontend와 backend가 연결이 되지 않아 에러가 발생함...
+
+docker run --name goals-backend --rm -d -p 80:80 goals-node
+위와 같이 커맨드를 입력
