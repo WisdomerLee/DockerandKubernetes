@@ -1,0 +1,59 @@
+Docker가 무엇인가??
+Container를 만들고 관리하기 위한 도구
+Container는 ?? 소프트웨어의 표준화된 단위, 유닛 
+즉 코드 패키지와 그것을 실행하기 위해 필요한(의존성이 있는) 코드 단위
+같은 container는 항상 같은 어플리케이션을 같은 형태로 실행함 (주변 환경과 상관 없이)
+
+Docker, Container
+표준화된 Container : 표준화된 Container는 각각 독립적으로 동작할 수 있고 어디에나 실어줄 수 있음
+소프트웨어를 실행하기 위한 기본 동작을 하기 위해 묶인 것들이 한 군데 같이 묶여 있음
+현대 운영체제에 Container를 실행하는 것을 지원함
+Docker는 Container를 만들고 관리하기 쉽게 만든 도구
+
+Docker와 Container가 왜 필요한가??
+독립적이고 표준화된 어플리케이션 패키지
+개발환경과 프로그램이 실행되는 환경이 다를 수 있음 >> 해당 환경이 다름에 따라 같은 코드가 동작할 수도, 동작하지 않을 수도 있음 > 해당되는 원인을 찾는데 시간이 오래 걸릴 수도 있음
+모든 팀 동료가 같은 개발 환경을 갖추어야 함
+프로젝트를 변경하면 해당 개발 환경이 달라지는 경우도 있음 >> 일일이 제거하고 설치해야 하는가??
+
+Virtual Machine/ Virtual Operating System
+가상의 기기, 가상의 동작 환경을 만들고 어플리케이션을 그 위에서 실행시킴
+Window, Linux, Mac등 모든 OS 환경에서 Virtual Machine을 통해 Virtual Operating System을 설치, 환경을 만들고 그 위에서 어플리케이션을 실행함
+각각 가상의 기기, 환경에서 동작하므로 일일이 설치하고 삭제할 필요가 없음
+컴퓨터 상에 존재하는 또다른 컴퓨터를 만드는 것이므로 리소스 소모가 큼 : 모든 환경에서 동작하는 이점은 있으나 리소스 소모가 많은 부분은...단점
+특히 많은 가상 환경, 기기가 설치된 상태라면 더더욱
+
+Virtual Machine 
+Docker와 Container??는 이런 문제를 어떻게 해결하는가??
+Docker는 OS에 이미 깔려있는 부분과 Container를 지원하는 부분을 찾아내고
+Docker Engine을 실행 
+그 위에 Container를 실행함
+가상 컴퓨터보다 훨씬 적은 리소스를 사용함
+이미지를 통해 가상 환경을 똑같이 구성할 수 있음
+OS에 가해지는 부하가 적고 매우 빠르고 디스크 공간 차지가 적음
+공유하고 재구성하고 배포하는 방법이 쉬움
+앱과 환경만 포함(기기는 포함하지 않음)
+
+Docker 설치하기!!
+https://docker.com/로 접속하고
+https://docs.docker.com/get-docker/로 들어가 설치 운영체제에 맞는 것을 선택하기
+
+windows 10의 경우 hyper-v, bios에서 가상머신 지원 활성화(SVM)를 하고 WSL을 깔고 난 뒤에 docker를 설치
+Linux의 경우는 docker engine을 깔기만 하면 끝
+
+Docker Engine- Docker Desktop, Docker Hub, Docker Compose
+
+Kubernetes를 지원하기 위해 쓰는 것...
+
+docker로 기본적으로 이미지를 만들어서 container에서 실행하는 것 ...
+image를 만들려면
+
+IDE(개발 툴킷)에서 terminal을 열어 docker build .을 입력할 것(물론 해당 코드와 dokerfile이 있는 폴더에서 실행해야 함)
+실행중인 docker를 닫으려면
+새 터미널을 열고 docker ps로 현재 실행중인 docker의 목록을 볼 수 있음
+해당 목록의 현재 실행중인 docker의 이름을 얻어
+docker stop docker이름을 터미널에서 실행하면 잠시의 시간 경과후 docker의 실행이 종료 됨
+
+Foundation Section : Images - Container, Data-Volumes(in Container), Container -Networking
+RealLife: Multi-Container Projects, Use Docker Compose, Utility Containers, Deploying Docker Containers
+Kubernetes: Kubernetes-Basics, Kubernetes-Data-Vlumes, Kubernetes-Networking, Deploying Kubernetes Cluster
