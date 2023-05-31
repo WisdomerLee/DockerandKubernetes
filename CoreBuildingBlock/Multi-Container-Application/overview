@@ -1,0 +1,10 @@
+container 여럿을 사용하는 application을 만들기...!
+container가 여럿으로 구성된 응용 프로그램이 많음
+여러 서비스를 결합하여 하나의 어플리케이션을 만들기
+여러 container로 동작시키기
+
+데모 어플리케이션
+
+Database는 MongoDB를 기반으로 한 container
+backend는 nodejs의 rest api를 기반으로 한 container
+frontend는 react spa를 기반으로 한 container
