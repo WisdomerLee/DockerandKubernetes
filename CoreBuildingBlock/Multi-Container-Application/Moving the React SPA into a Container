@@ -1,0 +1,19 @@
+Dockerfile을 작성하고
+
+개발 툴의 터미널
+
+docker build -t goals-react .
+위의 커맨드를 입력하여 이미지를 만듦
+
+docker run --name goals-frontend --rm -d -p 3000:3000 goals-react
+위의 커맨드로 프론트엔드를 실행
+
+그대로 실행하면 실행되다 멈춤...
+
+실행 중인 컨테이너를 멈추고
+docker container rm goals-frontend
+
+상호작용하는 실행임을 알려주어야 함
+docker run --name goals-frontend --rm -d -p 3000:3000 -it goals-react
+
+위와 같은 형태로 작업을 하게 되면 프로그램 하나를 동작시키기 위해 기기의 포트를 여럿 노출시켜 써야 하는 문제가 생김..
