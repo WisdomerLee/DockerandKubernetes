@@ -6,3 +6,5 @@ container에서 다른 http로 접속을 하게 되려면...?
 
 container와 외부 network
 container와 network를 연결하기
+
+예시의 경우 mongo db를 종료할 때마다 데이터를 잃음
