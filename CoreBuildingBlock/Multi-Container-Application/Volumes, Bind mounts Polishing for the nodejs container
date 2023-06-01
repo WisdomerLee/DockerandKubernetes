@@ -1,0 +1,19 @@
+backend쪽 커맨드
+볼륨을 지정(데이터 저장)하고, bind mount 지정(소스코드 변경사항을 container에서 바로 확인하기 위해)
+docker run --name goals-backend -v "프로젝트 폴더의 절대 경로":/app -v logs:/app/logs -v /app/node_modules --rm -d -p 80:80 --newtork goals-net goals-node
+
+그리고 backend에 package.json 수정
+"scripts":{
+  "start" : "nodemon app.js"
+}
+,"devDependencies":{
+  "nodemon" : "^2.0.4"
+}
+해당 부분의 키워드가 없으면 추가해서 넣고 키워드가 있으면 그내용을 추가로 넣을 것
+
+그리고 이미지를 다시 만들어
+docker run --name goals-backend -v "프로젝트 폴더의 절대 경로":/app -v logs:/app/logs -v /app/node_modules --rm -d -p 80:80 --newtork goals-net goals-node
+다시 위의 커맨드를 실행
+
+backend의 환경변수를 설정하고 (dockerfile)에서 설정하고 해당 내용을 적용하기 위해 javascript의 ``문자를 이용하여 동적으로 할당할 수 있도록 수정한 뒤에
+다시 이미지를 설정하고
