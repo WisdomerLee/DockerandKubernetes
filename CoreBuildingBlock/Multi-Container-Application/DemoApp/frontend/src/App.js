@@ -14,6 +14,8 @@ function App() {
       setIsLoading(true);
 
       try {
+        //backend, mongodb와 달리 frontend의 주소는 바꾸지 않음
+        //이유는 이것이 실행되는 곳은 docker로 실행되는 것이 아니라 일반 브라우저에서 실행되기 때문
         const response = await fetch('http://localhost/goals');
 
         const resData = await response.json();

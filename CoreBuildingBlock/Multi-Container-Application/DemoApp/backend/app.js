@@ -84,7 +84,16 @@ app.delete('/goals/:id', async (req, res) => {
 });
 
 mongoose.connect(
-  'mongodb://localhost:27017/course-goals',
+  //주석으로 지워진 부분은 container쪽이 아닌 기기 자체의 포트에 접근을 시도
+  //'mongodb://localhost:27017/course-goals',
+  //container쪽의 포트에 접근하기 위해 주소를 바꿈
+  //'mongodb://host.docker.internal:27017/course-goals',
+  //docker network를 쓰기 위해 backend에서의 접근 주소도 docker 내부 주소로 변경
+  //'mongodb://mongodb:27017/course-goals',
+  //docker network를 쓰고 또한 mongodb에 사용자와 패스워드를 지정하게 되면 접근할 때 해당 내용이 추가로 필요함
+  //아래의 예시는 사용자이름이 max, 비밀번호가 secret으로 지정된 것
+  //javascript의 특수한 동적 문자할당 ``을 활용
+  `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongodb:27017/course-goals?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
