@@ -1,0 +1,19 @@
+Docker Compose는 무엇이고 왜 쓰는가??
+
+여러 docker build
+혹은 여러 docker run에 관련된 실행 옵션들을 모두 저장하여 
+하나의 configuration 파일로 갖고 있으며
+Orchestration commands로 되어있음 build, start, stop...등등
+
+여러 container로 구성되는 실행 파일들을 실행하거나 이미지를 만들어둘 때 유용
+
+docker compose는 이미지를 만드는 dockerfile을 대체하지 않음
+이미지나 컨테이너를 대체하지도 않음
+docker compose는 하나의 기기에서 다수의 container를 효율적으로 실행시키는데 강점이 있음
+
+Docker Compose파일 작성하기
+Services(Container들에서 실행되어야 할 것들)
+published port, environment variables
+
+volumes, networks 등을 모두 정의할 수 있음
+
