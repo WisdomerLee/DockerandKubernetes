@@ -1,0 +1,16 @@
+개발 툴에서 프로젝트 폴더에
+docker-compose.yaml 파일을 만듦
+
+docker-compose.yaml파일에 들어가는 내용 *********** 사이
+//현재 docker-compose 최신 version : 3.8임
+yaml은 들여쓰기로 종속성을 나타냄
+
+***************************
+version: "3.8"
+services:
+  mongodb:
+    
+  backend:
+  
+  frontend:
+***************************
