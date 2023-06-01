@@ -21,17 +21,43 @@ services:
     env_file:
       - ./env/mongo.env
   backend:
-  #기본이 되는 이미지를 제공하는 것 말고도 이미지의 정보만 제공하여 이미지를 재구축할 수도 있음
-    image:
+  #기본이 되는 이미지를 제공하는 것 말고도 이미지의 정보만 제공하여 이미지를 재구축할 수도 있음 : 상대경로로 지정된 폴더 경로에서 Docker file을 찾아 해당 docker file로 build함
+    #build: ./backend
+    build:
+      context: ./backend #dockerfile위치
+      dockerfile: Dockerfile #docker file 이름
+      #만약 여러 중첩된 dockerfile이 있을 경우 dockerfile이 상위의 폴더의 내용을 복사해야 할 수 있을 경우도 있음... 그럴 경우에 추가 선택으로 지정할 방법이 있음
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app #bind mount의 경우 절대 경로로 지정해야하나 compose파일로 지정할 경우 파일이 있는 곳에서 상대 경로로 지정하면 됨
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on: #compose파일에서만 지정할 수 있는 것, 여러 컨테이너를 실행해야 할 때 특정 컨테이너는 다른 컨테이너가 동작하고 실행되어야 할 경우가 있음... 그럴 경우 지정
+      - mongodb
   frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true #이 서비스를 입출력이 필요함을 알려줌
+    tty: true #이 옵션도 할당이 되어야 입출력의 단말을 지정할 수 있음...
+    depends_on:
+      - backend
 #명명된 볼륨의 경우는 services와 같은 위치에 지정하기... bind mount, 익명 볼륨은 지정할 필요가 없음
 volumes:
   data:
+  logs:
 ***************************
 mongodb를 설정할 때 detachmode, rm, network를 설정하지 않았는데 
 compose파일로 설정할 경우 자동으로 detachmode에 컨테이너 실행이 끝나면 제거하고 compose파일에 등록된 모든 서비스 컨테이너를 같은 network로 올리기 때문에 해당 설정을 해둘 필요가 없음
 그러나 compose파일 여럿으로 설정된 프로그램 같은 경우는 같은 network로 묶어야 할 필요가 있는데 그럴 땐 
 실행되어야 할 서비스의 하위에 networks: 으로 네트워크 이름을 지정해주면 됨 그러면 compose파일 자체에서 지정한 네트워크와 사용자가 지정한 네트워크 두 가지에 컨테이너가 등록됨
+compose 파일로 지정될 때 build가 지정되어있을 경우 compose 파일이 실행될 때마다 이미지가 생성되는가 하면 그것은 아님 > 
+
 
 만약 리눅스 환경이라면
 Docker compose를 별도로 깔아야 하는데
