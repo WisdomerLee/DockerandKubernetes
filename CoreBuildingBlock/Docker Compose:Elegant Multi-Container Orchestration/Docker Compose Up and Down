@@ -1,0 +1,16 @@
+
+docker compose 파일로 실행하기
+
+docker images prune -a로 이미지 모두 지우고
+docker container prune -a로 컨테이너도 모두 삭제한 뒤에
+
+터미널에
+docker-compose up : compose파일에 있는 모든 이미지를 (없으면)빌드하고 컨테이너를 실행시킴
+docker-compose up -d : compose파일의 모든 이미지를 없으면 빌드하고 컨테이너를 실행시킴, 분리 모드로 실행함
+
+그리고 compose파일로 실행한 서비스를 멈추고 싶으면
+
+docker-compose down을 실행 : 
+하지만 위의 커맨드는 컨테이너에서 이름지은 볼륨을 생성했다면 그것까지 지워주진 않음
+
+docker-compose down -v로 실행하면 볼륨도 제거함...
