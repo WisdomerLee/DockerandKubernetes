@@ -1,0 +1,8 @@
+
+docker-compose up --build : 이미 기존에 있는 이미지가 있음에도 소스가 변경되어 다시 빌드해야 함을 커맨드로 강제할 경우...
+
+docker-compose build : 이렇게 하면 이미지를 생성만 하고 실행은 하지 않음
+
+만약 docker-compose의 파일에
+container_name:으로 서비스의 이름을 지정할 수 있음
+container_name: mongodb 로 하면 실제 docker에서 지정하는 container이름이 mongodb가 됨
