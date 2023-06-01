@@ -1,0 +1,6 @@
+frontend container를 bind mount를 써서 소스코드 업데이트를 즉시 확인하고 싶을 때
+
+docker run --name goals-frontend --rm -p 3000:3000 -it -v "프로젝트 소스 폴더의 절대 경로":/app/src goals-react
+
+image를 build할 때
+.dockerignore 파일을 만들어 copy할 때 제외할 항목을 지정하여 넣으면...
