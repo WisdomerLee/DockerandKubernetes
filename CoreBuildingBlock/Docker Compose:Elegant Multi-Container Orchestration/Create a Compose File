@@ -9,8 +9,36 @@ yaml은 들여쓰기로 종속성을 나타냄
 version: "3.8"
 services:
   mongodb:
-    
+    image: 'mongo' #기본이 되는 이미지가 mongo라는 것을 알려줌, 또한 compose로 실행되는 것은 기본적으로 detachmode에 실행이 끝나면 자동으로 컨테이너를 제거함...
+    volumes:
+      - data:/data/db
+    #환경변수를 추가하는 방법 2가지 : environment:로 하고 그 밑에 줄줄이 나열하기
+    #env_file:로 하고 환경변수를 저장한 파일 자체를 불러오기 : 상대 경로로 표현
+    #environment:
+      #MONGO_INITDB_ROOT_USERNAME: max
+      #MONGO_INITDB_ROOT_PASSWORD: secret
+      #- MONGO_INITDB_ROOT_USERNAME=max
+    env_file:
+      - ./env/mongo.env
   backend:
   
   frontend:
+#명명된 볼륨의 경우는 services와 같은 위치에 지정하기... bind mount, 익명 볼륨은 지정할 필요가 없음
+volumes:
+  data:
 ***************************
+mongodb를 설정할 때 detachmode, rm, network를 설정하지 않았는데 
+compose파일로 설정할 경우 자동으로 detachmode에 컨테이너 실행이 끝나면 제거하고 compose파일에 등록된 모든 서비스 컨테이너를 같은 network로 올리기 때문에 해당 설정을 해둘 필요가 없음
+그러나 compose파일 여럿으로 설정된 프로그램 같은 경우는 같은 network로 묶어야 할 필요가 있는데 그럴 땐 
+실행되어야 할 서비스의 하위에 networks: 으로 네트워크 이름을 지정해주면 됨 그러면 compose파일 자체에서 지정한 네트워크와 사용자가 지정한 네트워크 두 가지에 컨테이너가 등록됨
+
+만약 리눅스 환경이라면
+Docker compose를 별도로 깔아야 하는데
+
+커맨드 창에
+1.sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+2.sudo chmod +x /usr/local/bin/docker-compose
+3.sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+제대로 깔렸는지 확인하기 위해...
+4.docker-compose --version
+위의 커맨드를 순차적으로 실행하여 docker compose를 깔아야 함
