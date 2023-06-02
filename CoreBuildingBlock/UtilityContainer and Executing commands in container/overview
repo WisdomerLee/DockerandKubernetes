@@ -21,3 +21,4 @@ docker run -it -v "프로젝트 폴더 경로":/app "실행할 image" install ex
 로 실행하면
 
 bind mount로 지정된 폴더에 install한 것이 프로젝트 폴더 내로 복사가 됨
+
