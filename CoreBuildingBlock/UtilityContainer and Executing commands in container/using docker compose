@@ -1,0 +1,18 @@
+docker-compose.yaml파일 생성
+
+version: "3.8"
+services:
+  npm:
+    build: ./
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
+      
+이렇게 지정하고 docker compose 파일을 실행하기
+
+docker-compose up init :실패함..
+docker-compose exec : 실행중인 container이름이 필요함
+docker-compose run npm init으로 실행하면...?
+
+docker-compose run --rm npm init으로 실행하면 container는 npm을 초기화하여 설치하고 설치가 끝나면 컨테이너가 삭제됨
