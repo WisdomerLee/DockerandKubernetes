@@ -24,3 +24,11 @@ DB_PORT=3306
 DB_DATABASE=homestead
 DB_USERNAME=homestead
 DB_PASSWORD=secret
+
+
+만약 터미널에서 docker-compose up으로 실행할 때 
+특정 영역을 제외하고 싶다면...
+특정 서비스를 제외한 실행하고 싶은 나머지 서비스를 일일이 넣어야 함...
+
+docker-compose up -d server php mysql
+서버, php, mysql만 실행됨
