@@ -43,3 +43,9 @@ docker-compose.yaml파일에서 server쪽에 depends_on:으로 php, mysql을 추
 docker-compose up -d --build  server
 위와 같이 실행하면 소스코드를 레이어단으로 비교하여 변경사항이 있으면 변경된 부분부터 다시 이미지를 재구축함
 변경사항이 없으면 빌드하지 않음..
+
+커맨드 창으로
+docker-compose run --rm artisan migrate
+
+실행하면
+데이터베이스가 이동하게 됨...
