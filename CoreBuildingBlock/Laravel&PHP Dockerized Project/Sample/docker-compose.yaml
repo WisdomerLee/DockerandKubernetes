@@ -6,7 +6,13 @@ services:
     ports:
       - '8000:80'
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./src:/var/www/html
+      #아래와 같이 하면 설정 파일이 통합되어 복사, 저장됨.. default.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf.d/default.conf:ro
+    #아래와 같이 종속성을 설정하면 server만 실행시켰을 때 php와 mysql도 같이 실행됨
+    depends_on:
+      - php
+      - mysql
   php:
     build:
       context: ./dockerfiles
