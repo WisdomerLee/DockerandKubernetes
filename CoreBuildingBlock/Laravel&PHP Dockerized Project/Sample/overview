@@ -2,4 +2,5 @@
 
 docker-compose.yaml로 지정된 docker-composer 파일 중에 composer 부분만 실행하려면... 아래와 같이
 아래의 상황은 컨테이너 종료후 삭제 옵션이 추가
+또한 laravel 프로젝트를 컨테이너에서 생성하도록 설정
 docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
