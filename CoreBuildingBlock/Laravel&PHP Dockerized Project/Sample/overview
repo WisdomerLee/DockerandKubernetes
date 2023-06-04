@@ -4,3 +4,23 @@ docker-compose.yaml로 지정된 docker-composer 파일 중에 composer 부분�
 아래의 상황은 컨테이너 종료후 삭제 옵션이 추가
 또한 laravel 프로젝트를 컨테이너에서 생성하도록 설정
 docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+
+이 커맨드를 실행하고 /src폴더에 복사된 laravel 프로젝트에서 
+.env파일 내부를 보면
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=root
+DB_PASSWORD=
+
+이 부분에 해당되는 영역이 있는데 위의 내용을 수정하여야 함 : container에서 동작하도록 하려면...
+/env/mysql.env에서 설정한 사용자 이름, 패스워드를 같게 만들어 주어야 함
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
