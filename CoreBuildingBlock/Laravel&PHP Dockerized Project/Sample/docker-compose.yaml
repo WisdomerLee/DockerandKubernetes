@@ -16,8 +16,10 @@ services:
     #포트는 노출할 필요가 없음: 컴퓨터에서 직접 php로 보내지 않고 php 컨테이너에서 server와 통신하기 때문에 port를 열 필요가 없음
   mysql:
     image: mysql:5.7
-    environment:
+    env_file:
+      - ./env/mysql.env
   composer:
+    
   artisan:
   npm:
   
