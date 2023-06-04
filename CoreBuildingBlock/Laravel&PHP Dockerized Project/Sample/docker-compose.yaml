@@ -13,8 +13,10 @@ services:
       dockerfile: php.dockerfile
     volumes:
       - ./src:/var/www/html:delegated #원래 bindmount로 처리하게 되면 다운 받은 코드 등이 bind mount된 폴더로 파일이 이동, 복사되는데 :delegated를 쓰게 되면 호스트 기기에 저장을 하지 않음! : 성능상 최적화가 진행됨
-      
+    #포트는 노출할 필요가 없음: 컴퓨터에서 직접 php로 보내지 않고 php 컨테이너에서 server와 통신하기 때문에 port를 열 필요가 없음
   mysql:
+    image: mysql:5.7
+    environment:
   composer:
   artisan:
   npm:
