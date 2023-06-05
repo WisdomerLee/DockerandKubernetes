@@ -1,0 +1,8 @@
+AWS EC2 : 원격 기기를 관리하고 제어하는것을 가능하게 하는 서비스
+
+EC2를 생성하고 실행, VPC, 보안 그룹
+보안 설정 그룹을 www에 port를 노출시켜야 함
+SSH 에 연결하여 docker를 설치하고 container를 실행하는 방법을 찾음
+
+커맨드 창에 예시 : EC2예시를 실행하려면
+docker run -d --rm --name node-dep node
