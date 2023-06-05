@@ -1,0 +1,99 @@
+코드 변경시마다 이미지를 생성하고 실행하여 동작을 확인..
+AWS & EC2
+
+AWS Management Console
+AWS에는 서비스와 제품이 많으므로...
+가상 서버를 만들 수 있는 EC2를 선택
+
+클라우드 컴퓨터를 실행...
+
+Amazon machine image를 고르기...
+서비스 종류를 고르고
+
+vpc가 생성되었는지를 확인하기
+: 실행을 시도하면 새 키 pair를 생성하게 되는데
+이 key pair는 저장하고 (1번만 가능함) : 키를 통해 개인 저장소 파일 등을 지정하고
+가상 pc를 실행한 뒤에 
+
+SSH로 연결을 시도
+
+windows의 경우 wsl2를 실행하기...
+SSH를 쓰려면 WSL2로 접근하여 실행하여야 함
+
+windows 의 터미널을 열고 ssh 명령어 처리
+
+
+
+AWS의 원격 PC에 접속을 하게 되면....>
+
+개발 툴의 terminal에
+chmod 400 example-1.pem (개발 데모에서 보여준...)
+
+원격으로 접속이 되면 더이상 로컬 기기에서 실행되지 않고 원격 컴퓨터의 환경에서 실행이 진행됨
+
+
+
+virtual machine에 docker 설치하기!!!
+
+
+linux에서 쓰는 command : amazon-linux-extras install docker로 설치를 시도하면 막히고
+
+sudo yum update -y
+sudo yum -y install docker
+
+sudo service docker start
+
+sudo usermod -a -G docker ec2-user
+
+위의 커맨드를 실행하고 logout하고 다시 커맨드 실행으로 돌아올 것
+
+sudo systemctl enable docker
+그리고 위의 커맨드를 실행하면 docker가 활성화...
+
+docker version으로 docker의 버전이 출력되면 제대로 설치된 것
+
+docker가 설치되면
+커맨드 창에
+sudo service docker start로 docker를 실행하기
+docker run으로 실행이 가능한지 확인
+
+만약 AWS의 서버 상의 컴퓨터가 아닌 가상의 컴퓨터로 접속하고 관리하고 싶은 경우...?
+
+이미지를 클라우드 원격 컴퓨터에 설치하기
+1.소스코드를 그대로 복사한 뒤에 복사된 곳에서 build를 실행하여 image를 만들기
+2.이미지를 빌드해두고 빌드해둔 이미지를 옮기기
+
+1의 방식은 매우 복잡하고 권한 설정등의 문제가 있으므로...
+2의 완성된 이미지를 그대로 옮기는 형태를 쓸 것
+로컬 기기에서 이미지를 빌드하고 그 빌드된 이미지를 클라우드 컴퓨터에 옮기기
+
+docker hub에 repository를 만들고 image를 올리기
+SSH로 원격으로 연결된 터미널 말고 로컬의 터미널을 추가로 열어서
+
+이미지로 빌드하기 전에
+.dockerignore파일을 만들고 이미지에 복사하지 않을 파일들을 설정(보안용 키 페어 파일 이라던가..)
+node_modules
+Dockrfile
+*.pem
+
+등을 설정
+
+로컬 머신에서 docker build .으로 빌드하기
+
+그 뒤에
+docker login으로 docker hub의 사용자 이름, 비밀번호를 입력하고
+
+docker push "올리고 싶은 이미지"
+
+그리고 원격 컴퓨터에 연결된 터미널로 돌아가서 
+(만약 접속이 끊겼다면 client_loop: send disconnect: Broken pipe docker-complete $ ssh -i "키페어 파일" "연결할 원격 컴퓨터 주소" 를 커맨드창으로 입력하여 접속)
+
+docker run -d --rm -p 80:80 "실행할 docker image 이름"
+
+만약 접근이 permission 거부로 실행되면
+sudo docker run -d --rm -p 80:80 "실행할 docker image 이름" 로 실행하기
+
+ec2-원격 컴퓨터는 www와 기본적으로 연결이 허용되지 않음...
+ec2-원격 컴퓨터의 설정으로 들어가 security부분을 들어가서
+최상단의 security 그룹으로 들어간 뒤에 선택하여 보면
+inbound, outbound 쪽 규칙이 보임
