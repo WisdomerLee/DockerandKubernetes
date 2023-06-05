@@ -1,0 +1,10 @@
+basic sample
+
+node js: 데이터 베이스도 없는 경우
+1개의 이미지, container
+
+possible deployment approach : docker를 원격으로 설치하고 image를 push, pull한 뒤에 원격으로 container를 실행
+
+AWS, Microsoft Cloud, Google cloud서비스 가 있음
+
+예시에서는 AWS를 쓰는 예시를 쓰게 됨
