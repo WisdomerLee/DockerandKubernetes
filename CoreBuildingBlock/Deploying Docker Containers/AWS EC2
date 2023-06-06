@@ -6,3 +6,9 @@ SSH 에 연결하여 docker를 설치하고 container를 실행하는 방법을 
 
 커맨드 창에 예시 : EC2예시를 실행하려면
 docker run -d --rm --name node-dep node
+
+aws의 ec2의 가상 머신(원격) 의 inbound와 outbound의 설정을 보안 설정에서 확인
+outbound는 외부로 반응을 보내는 것, inbound는 해당 기기로의 메시지를 허용하는 것
+key 파일이 중요 : inbound로 허용되는 것은 해당 key파일이 있을 때만 가능하도록...
+
+inbound rule에 http  type 접속을 허용함...
