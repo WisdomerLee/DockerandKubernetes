@@ -1,0 +1,63 @@
+하기 전에 알아야 할 사항
+
+AWS ECS: EC2의 서비스와는 달리 무료 제공이 되지 않음
+생성한 모든 리소스등을 반드시 확인할 것: 그렇지 않으면 매달 나가는 비용이 크게 비싸질 수 있음...
+
+ECS를 시작하면
+Container, Task, Service, Cluster의 네 분야의 부분을 설정하여 어떤 컨테이너인가를 지정해주어야 함
+
+container의 custom을 골라서
+
+container name은 적당한 이름을 고르고
+image에는 도커허브에 있는 이미지 이름
+만약 해당 image가 공개용이 아니면 
+docker hub의 로그인정보를 지정할 수도 있음
+
+port mappings: 포트를 통해 원격으로 연결하는 부분이 있다면 여기서 쓰게 될 포트 번호를 지정함
+
+고급 설정에선
+환경 부분으로 가면 CPU, GPU, 커맨드 등을 지정할 수 있음
+
+log를 출력할지도 결정할 수 있고
+
+task: 앱의 청사진
+
+관리하고 있는 container update하기
+container설정에서 update 부분을 누르면 기본으로 image에서 설정한 dockerhub의 이미지를 최신으로 가져오게 됨
+
+
+
+여러 container의 앱을 실행하게 하려면 
+cluster부분으로 들어가서
+Addcontainer로 container의
+작업을 만들고
+Task role을 지정함
+역시 마찬가지로 image부분을 설정하고
+environment를 설정할 때
+command에 node, app.js를 설정
+
+environment variables에 환경변수를 키, 값 쌍으로 지정할 수 있음
+env-file에 저장했던 것을 저기에 그대로 집어넣으면 됨
+다만 container내부의 url은 localhost로 바꾸어야 함
+
+추가로 addcontainer로 container 이름, 및 위에서 했던 container 설정을 다른 container의 설정을 그대로 가져옴
+
+mongodb의 경우는 
+image에 mongo 만 넣으면 됨(docker hub의 공식 이미지)
+port는 mongo가 기본으로 쓰는 27017로 설정할 것
+
+network부분은
+cluster에서 생성한 vpc를 쓸 것
+subnet은 container들이 있는데 그중에 연결할 것들을 선택할 것
+
+load balancing : load balancing은 application load balancing을 선택하기
+
+configure load balancer에서 설정한 vpc부분을 그대로...
+subnet부분도 그대로 체크박스를 이용하여 사용할 것임을 명시하고
+
+service load balancer name은 설정한 loadbalancer쪽을 그대로 가져올 것 : 물론 이 설정을 쓰게 되면 AWS의 가격이 조금 더 올라갈 수 있음
+
+scale은 자동으로 container의 객체 자체를 늘려 서버로 들어오는 메시지 등에 대한 응답을 지원할 수 있도록 해줌
+
+network의 public ip가 업데이트 때마다 바뀌게 됨
+load balancer쪽에서 
