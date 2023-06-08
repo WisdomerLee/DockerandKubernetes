@@ -1,0 +1,7 @@
+container는 pod가 관리함
+pod는 여러 container를 실어나를 수 있음
+
+worker node에 pod가 있음
+
+worker node가 container를 실행
+nodes: 기기 혹은 가상 기기
