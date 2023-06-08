@@ -1,0 +1,19 @@
+Kubernetes가 무엇인가??
+오픈 소스 기반의 시스템
+여러 container를 배포, 관리하는 시스템
+
+container 배포, container 서비스 확장, container 에러 발생시 중지, 재시작, 재배포 등에 큰 도움이 됨
+
+Kubernetes configuration
+: 예상되는 구조 : container가 동작하는 갯수 등
+
+클라우드 서비스가 kubernetes를 지원하면 kubernetes의 구성을 그대로 쓸 수 있고
+지원하지 않더라도 로컬머신에 kubernetes를 깔면...
+
+클라우드에서 제공하는 특수한 설정도 이 Kubernetes의 설정에 집어넣을 수 있음
+
+kubernetes : open source software 모음
+특정 서비스 제공자도 아니나 서비스 제공자에 한정되지 않음
+
+Kubernetes : 여러 기기에서 쓸 수 있는 docker compose와 매우 비슷한 역할을 수행함
+
