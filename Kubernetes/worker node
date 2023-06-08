@@ -1,0 +1,25 @@
+kubernetes가 하는 일
+pods 등을 생성하고 관리
+포드를 감시하고 재생성, pod의 크기를 제어
+설정에 맞게 리소스를 제공
+
+개발자가 하는 일
+: 개발자가 설정해둔 설정, 해야 할 일을 수행하기 위해
+cluser와 node객체(worker + master node)를 만듦
+api server를 설정하고 kubelet 과 다른 kubernetes 서비스를 구축, software가 node에서 실행
+그 외의 다른 서비스 제공자 (파일 관리, 분배 등의 기능이 제공)
+
+worker node에 대해 알아보기
+: 일종의 컴퓨터, 가상 기기
+master node가 관리하고
+내부엔 pod가 있음
+pod는 하나 혹은 그 이상의 어플리케이션 컨테이너와 그 해당 리소스를 가짐(볼륨, IP, 실행 설정등)
+pod는 kubernetes가 만들고 관리
+pod 내부에는 container(하나 혹은 여럿)이 있고 volume이 있음
+worker node에는 pod가 여럿이 있을 수 있음
+worker node에 docker가 있고
+kublet이 있음 kublet은 master node와 worker node간 통신을 하게 만드는 요소
+kube-proxy : 노드, 그리고 pod간 네트워크를 담당, 관리
+
+개발자가 할 일은 해당 worker node가 최종적으로 실행되어야 할 상태만 정의해두면 됨
+
