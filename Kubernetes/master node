@@ -1,0 +1,9 @@
+master node :
+api server가 동작 : kublet과 통신하고 관리
+scheduler : pod를 만들고 worker node를 선택하여 실행하게 함
+kube-controller-manager : worker node를 감시하고 조절, pod의 숫자를 관리
+cloud-controller-manager : 특정 cloud provider에 cloud provider resource와 어떻게 상호작용하는지 관리함
+
+개발자가 master node와 worker node를 생성하고 설치할 필요가 없음!
+
+kubernetes에 실행될 환경만 지정하면 끝
