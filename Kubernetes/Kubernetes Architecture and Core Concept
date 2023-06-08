@@ -5,3 +5,20 @@ worker node에 pod가 있음
 
 worker node가 container를 실행
 nodes: 기기 혹은 가상 기기
+
+worker node에는 proxy/config가 필요함
+node끼리의 network를 proxy에서 조절함
+
+worker node는 필요하게 되면 자동으로 늘어나 서비스에 대응함
+작업을 worker node별로 고르게 분배함
+
+worker node를 관리하는 master node가 있음
+control plane이 있어 worker node를 관리
+contorl plane에는 최종적으로 어떤 상태로 관리할 것인지 정의해주면 되고
+
+master node 자체가 분산되어 있을 수도 있음 : 시스템 정지를 막을 수 있음
+
+그 외에 master node에는 worker node를 관리하는데 도움이 되는 여러 요소, 성분들이 있음
+
+master node와 worker node들이 모여 cluster를 이루게 되는데 : 하나의 cluster는 worker node와 master node간의 network로 묶여있음
+해당 클러스터를 통해 cloud provider api를 제공
