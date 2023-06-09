@@ -1,0 +1,24 @@
+설치를 위한 조건과 설치 단계
+참고 링크
+
+https://kubernetes.io/docs/tasks/tools/
+https://minikube.sigs.k8s.io/docs/start/
+
+
+cluster
+master node
+worker node 
+
+master node와 worker node 모두 소프트웨어에 필요한 모든 것이 설치된 상태여야 함
+
+kubectl : cluster에 설정 등을 전달하는 도구
+
+설치에 필요한 링크(macOS)
+https://minikube.sigs.k8s.io/docs/start/
+https://kubernetes.io/docs/tasks/tools/#install-with-homebrew-on-macos
+
+설치에 필요한 링크(windows)
+https://minikube.sigs.k8s.io/docs/start/
+https://kubernetes.io/docs/tasks/tools/#install-on-windows-using-chocolatey-or-scoop
+
+windows의 경우 package 자동 관리 도구인 chocolatey라는 것이 있다 : 해당 강의에서도 chocolatey라는 것을 이용하여 설치, 패키지 업그레이드를 진행..
