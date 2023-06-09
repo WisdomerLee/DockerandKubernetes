@@ -1,0 +1,29 @@
+이제 배포를 할 것인데
+역시 image를 기반으로 동작하는 container 단위의 어플리케이션을 배포할 것이므로
+
+기본적으로 docker의 image를 생성함
+
+개발 도구의 terminal
+
+minikube start --driver=hyperv
+를 실행하여 hyperv에서 minikube를 실행하고
+
+minikube status
+를 실행하여 minikube가 동작중인지 확인
+
+정상 동작하면
+kubectl help로 해당 커맨드의 도움말을 확인
+
+kubectl create deployment "배포할 앱 이름" --image="로컬 이미지"
+위의 커맨드를 실행하면 배포, 관리할 객체가 만들어짐
+
+그러나
+kubectl get deployments로 deployment의 상태를 확인하면 ready부분이 제대로 되어있지 않음... :해당 이미지를 찾지 못해서
+
+kubectl get pods로 pod들의 상태를 확인
+
+kubectl delete deployment "이미지이름"
+를 실행하여 
+
+kubectl create deployment "배포할 앱 이름" --image="docker hub에 있는 이미지"
+
