@@ -1,0 +1,30 @@
+만약 업데이트할 때 버전을 잘못 지정하거나 하면...?
+
+kubectl rollout status "docker hub 이미지"
+로 진행 상태를 확인하면...
+
+업데이트 상태를 무기한 기다리는 상태로 멈추게 됨 : 에러 상태 지속
+
+그럼 해당 업데이트를 rollback시켜야 하는데
+
+kubectl get pods로 pod의 상태를 확인하고
+
+kubectl rollout undo "되돌릴 docker hub 이미지"
+
+만약 그보다 더 전의 상태로 되돌리고 싶다면...?
+
+kubectl rollout history "확인하고 싶은 이미지"
+
+물론 추가 정보를 확인하고 싶다면
+위의 커맨드로 나왔던 revision등을 확인하고
+kubectl rollout history "확인하고 싶은 이미지" --revision="확인하고 싶은 버전"
+
+위의 커맨드 들로 확인하고
+
+kubectl rollout undo "되돌릴 이미지" --to-revision="되돌리고 싶은 코드"
+
+를 실행하면 되돌리고 싶은 버전으로 되돌릴 수 있음
+
+kubectl delete service "지우고 싶은 서비스"
+
+kubectl delete deployment "지우고싶은 배포 서비스"
