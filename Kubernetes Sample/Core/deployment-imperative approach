@@ -19,11 +19,31 @@ kubectl create deployment "배포할 앱 이름" --image="로컬 이미지"
 
 그러나
 kubectl get deployments로 deployment의 상태를 확인하면 ready부분이 제대로 되어있지 않음... :해당 이미지를 찾지 못해서
+0/1과 같은 형태로 ready상태가 제 상태가 아님을 알 수 있음
 
 kubectl get pods로 pod들의 상태를 확인
 
 kubectl delete deployment "이미지이름"
 를 실행하여 
 
+kubectl push "docker hub경로/이미지 이름"
+
 kubectl create deployment "배포할 앱 이름" --image="docker hub에 있는 이미지"
 
+이것이 완료되면
+kubectl get deployments
+위의 커맨드를 실행하면
+ready부분이 완료됨을 알 수 있음 1/1과 같이...
+
+kubectl get pods
+로 다시 확인하면
+ready 부분이 똑같이 1/1처럼 완료된 상태임을 볼 수 있음
+
+minikube dashboard
+커맨드를 실행하면
+링크가 커맨드에 뜨는데
+해당 링크를 클릭하면 기본 브라우저에 해당 링크 연결이 뜸
+>> 클러스터에 대한 정보를 알 수 있는 창이 뜸
+
+deployments나 pods
+등의 정보를 볼 수 있음
