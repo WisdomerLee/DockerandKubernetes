@@ -1,0 +1,17 @@
+
+kubectl create deployment "실핼될 이름" --image="docker hub 이미지"
+로 배포를 생성하거나
+
+kubectl set image "배포 실행 이름" "실행되는 컨테이너 이름"="docker hub 이미지"
+으로 실행하여 배포를 업데이트 하는 방법이 있음
+
+위와 같은 방식들로 실행하면 다 좋으나 ... 해당 명령을 실행하려면 해당 컨테이너 이름, docker hub 이미지 이름을 계속 외워야 한다는 것이 있음
+
+docker run으로 실행하던 것들도 docker-compose up으로 설정을 한 번에 실행시킬 수 있었던 것처럼
+
+배포 및 서비스 구성을 파일로 기록하여 클러스터 실행시 해당 파일을 불러와서 적용하게 한다면...?
+
+kubectl apply -f config.yaml
+로 실행하면 파일을 config.yaml에 선언된 배포, 서비스 구성을 클러스터에 적용하게 됨
+
+config 파일에는 어느 상태로 되어야 하는지 적혀있음
