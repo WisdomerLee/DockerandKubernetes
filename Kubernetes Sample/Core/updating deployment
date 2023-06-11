@@ -1,0 +1,20 @@
+코드를 변경하고 다른 배포 이미지를 만들어서 다시 배포 하고 싶으면...?
+
+이미지를 만들기
+docker build -t " 이름 지정" .
+위의 커맨드를 실행시켜 특정 이름의 이미지를 만들고
+
+kubectl get deployments로 확인하고
+
+kubectl set image "docker hub 이미지" "기존에 쓰던 컨테이너 이름"="docker hub 이미지"
+
+물론 위의 커맨드를 실행하기 전에 push를 먼저 실행하여 이미지를 업데이트
+
+docker push "지정한 이미지 이름"
+
+버전이 다른 것을 tag 설정할 때 지정하여 버전을 올려가며 push할 것
+
+그러면 kubectl set image ~ 커맨드를 실행할 때 
+update되었다는 문구를 볼 수 있는데
+
+kubectl rollout status "docker hub 이미지 이름"
