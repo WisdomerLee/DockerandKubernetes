@@ -8,7 +8,18 @@ master-deployment.yaml파일을 프로젝트 내부에 만들고
 
 master-deployment.yaml
 ------------------------------
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: "실행될 pod 이름"
+  ports:
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment 
@@ -30,3 +41,7 @@ spec:
         - name: "짓고싶은 컨테이너 이름"
         - image: "docker hub의 image : dockerhub id/이미지 이름"
 ------------------------------
+config들 사이에 ---가 필요함 : yaml의 구분자
+
+Service를 먼저 놓는 것이 좋음
+
