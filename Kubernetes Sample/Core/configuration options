@@ -1,0 +1,10 @@
+조금 더 자세히 살펴보기
+
+만약 deployment.yaml파일에서
+
+containers:아래에
+imagePullPolicy: Always를 추가하면
+항상 태그가 최신 것이 아니어도 항상 docker hub의 image를 확인하고 끌어오게 됨
+아니면
+image: "docker hub image이름":latest
+로 태그에 latest로 설정되면 이미지가 업데이트 된 것이 있으면 image를 끌어와 업데이트를 실행하게 됨
