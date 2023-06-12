@@ -1,0 +1,7 @@
+자원 업데이트 및 지우기...?
+
+yaml파일의 내용을 바꾸고 
+kubectl apply -f=".yaml"로 커맨드를 입력하면 바로 적용됨
+
+kubectl delete -f=".yaml"로 커맨드를 입력하면 yaml파일이 지워지는 것이 아니라
+해당 yaml 파일을 기반으로 생성된 서비스, pod, container가 삭제됨
