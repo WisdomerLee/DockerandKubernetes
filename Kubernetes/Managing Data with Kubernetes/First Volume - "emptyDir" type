@@ -1,0 +1,16 @@
+kubernetes에서 제공하는 emptyDir타입의 volume을 이용해보자
+
+deployment.yaml
+
+sepc:
+  containers:
+    - name: story
+      image: dockerhub의 이미지 이름
+      volumeMounts:
+        - mountPath: /app/story #어플리케이션 스크립트 내부에서 정의된 저장 경로!
+          name: story-volume #컨테이너가 여러 볼륨을 사용하게 된다면 해당 컨테이너가 쓰게 될 볼륨을 이름을 통해 지정함
+  volumes:
+    - name: story-volume
+      emptyDir: {}
+
+emptyDir : 컨테이너가 시작될 때마다 볼륨을 생성
