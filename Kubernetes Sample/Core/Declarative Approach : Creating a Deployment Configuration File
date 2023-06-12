@@ -1,0 +1,47 @@
+배포에 쓰이는 프로젝트에 deployment.yaml 파일을 만듦
+
+deployment.yaml 파일 내용
+--------------
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: "이름짓고 싶은 서비스 이름"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "아래의 Pod 이름과 같을 것"
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: "지을 Pod 이름"
+        tier: backend
+    spec:
+      containers:
+        - name: "짓고싶은 컨테이너 이름"
+        - image: "docker hub의 image : dockerhub id/이미지 이름"
+--------------
+
+kind에 들어갈 수 있는 값엔 Service, Job등도 있음
+
+spec아래에 있는 template에 kind를 지정하지 않아도 자동으로 Pod에 대한 설정으로 인식하므로 Pod 설정을 하는 경우는 특별히 지정할 필요가 없음
+containers 아래에 - name: -image:등을 여럿 지정하면 여러 이미지에 기반한 container가 같은 pod내에서 실행됨
+
+selector:밑에 matchExpressions:로 보다 복잡한 selector를 선택할 수도 있음
+selector아래의 matchLables에 들어가는 key, value는 template아래의 metadata의 labels 아래의 내용과 같음 : 만약 같지 않으면 해당 selector로 제어되지 않음을 의미함
+
+
+
+
+커맨드 창에
+kubectl apply -f=deployment.yaml
+를 적용하면
+selector가 없다는 에러를 띄움
+
+selector를 yaml 파일에 추가하고
+
+kubectl apply -f=deployment.yaml
+을 실행하면
+
+kubectl get deployments로 확인해보기
