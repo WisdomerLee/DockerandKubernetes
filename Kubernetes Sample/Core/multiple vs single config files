@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: "짓고싶은 컨테이너 이름"
-        - image: "docker hub의 image : dockerhub id/이미지 이름"
+          image: "docker hub의 image : dockerhub id/이미지 이름"
 ------------------------------
 config들 사이에 ---가 필요함 : yaml의 구분자
 
