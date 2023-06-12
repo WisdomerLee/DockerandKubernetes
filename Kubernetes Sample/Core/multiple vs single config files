@@ -1,0 +1,15 @@
+config파일이 하나 혹은 여럿일 땐...
+
+여러 config로 된 것을 하나의 config 파일로 합쳐야 하는 경우
+
+---로 config파일을 구분함
+
+master-deployment.yaml파일을 프로젝트 내부에 만들고
+
+master-deployment.yaml
+------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+
+------------------------------
