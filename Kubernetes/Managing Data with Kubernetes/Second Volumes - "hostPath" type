@@ -1,0 +1,5 @@
+kubernetes에서 제공하는 볼륨 중 emptyDir의 경우 replica가 여럿일 경우...?
+
+emptyDir의 경우 pod가 container와 밀접하게 연관되어 있으면 해당 container가 에러가 났을 경우 다른 container로 요청을 보내게 되는데 그 땐 다른 container의 볼륨엔 데이터가 없어 에러가 날 수도 있음
+이 문제를 해결하는 방법이 여럿 있지만 볼륨의 형태를 바꾸어 해결할 수도 있음
+
