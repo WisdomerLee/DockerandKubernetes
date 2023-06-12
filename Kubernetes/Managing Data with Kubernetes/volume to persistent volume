@@ -1,0 +1,24 @@
+pod가 사라지면 볼륨도 사라짐
+
+hostPath : 같은 node의 환경일 때 유용함 : 즉 cluster의 노드가 단 하나일 경우! 
+
+클러스터가 확장되어 여러 노드로 동작하는 클러스터 단위에서는 hostPath도 한계가 있음
+: Pod, Node와 독립적인 볼륨이 필요함
+
+앱의 핵심 데이터는 유지되어야 함
+
+Persistent Volumes라는 것이 있음
+
+볼륨 타입과 Persistent Volume이 구분된 이유가 있을까??
+
+Pod와 볼륨을 분리하는 것이 핵심
+
+클러스터 관리자는 볼륨 구성을 설정하면 됨
+한 번 설정하면 클러스터 단위로 적용됨
+
+Persistent Volume은 Node, Pod와 별도로 존재함
+
+Node에서 PV Claim을 통해 PV에 접근함
+
+Node마다 다르게 PV를 지정할 수도, 공통으로 지정할 수도 있음
+유연함....
