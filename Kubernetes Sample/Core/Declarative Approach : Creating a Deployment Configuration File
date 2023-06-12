@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: "짓고싶은 컨테이너 이름"
-        - image: "docker hub의 image : dockerhub id/이미지 이름"
+          image: "docker hub의 image : dockerhub id/이미지 이름"
 --------------
 
 kind에 들어갈 수 있는 값엔 Service, Job등도 있음
