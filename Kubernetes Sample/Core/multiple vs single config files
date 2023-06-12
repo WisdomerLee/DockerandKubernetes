@@ -8,8 +8,25 @@ master-deployment.yaml파일을 프로젝트 내부에 만들고
 
 master-deployment.yaml
 ------------------------------
+
 ---
 apiVersion: apps/v1
-kind: Deployment
-
+kind: Deployment 
+metadata: 
+  name: "이름짓고 싶은 서비스 이름"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "아래의 Pod 이름과 같을 것"
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: "지을 Pod 이름"
+        tier: backend
+    spec:
+      containers:
+        - name: "짓고싶은 컨테이너 이름"
+        - image: "docker hub의 image : dockerhub id/이미지 이름"
 ------------------------------
