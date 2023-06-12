@@ -3,3 +3,20 @@ kubernetes에서 제공하는 볼륨 중 emptyDir의 경우 replica가 여럿일
 emptyDir의 경우 pod가 container와 밀접하게 연관되어 있으면 해당 container가 에러가 났을 경우 다른 container로 요청을 보내게 되는데 그 땐 다른 container의 볼륨엔 데이터가 없어 에러가 날 수도 있음
 이 문제를 해결하는 방법이 여럿 있지만 볼륨의 형태를 바꾸어 해결할 수도 있음
 
+sepc:
+  containers:
+    - name: story
+      image: dockerhub의 이미지 이름
+      volumeMounts:
+        - mountPath: /app/story #어플리케이션 스크립트 내부에서 정의된 저장 경로!
+          name: story-volume #컨테이너가 여러 볼륨을 사용하게 된다면 해당 컨테이너가 쓰게 될 볼륨을 이름을 통해 지정함
+  volumes:
+    - name: story-volume
+      hostPath:
+        path: /data #실제로 데이터가 저장될 경로: 로컬머신
+        type: DirectoryOrCreate #이 경우는 경로가 존재하지 않으면 만들도록 설정함 : Directory로만 하면 해당 디렉토리가 없으면 실패하게 됨
+
+hostPath로 지정하면 여러 pod에서 동작하는 container가 모두 같은 로컬 기기의 경로에서 데이터를 불러오게 되어 container 하나가 에러를 띄워 재시작을 하게 되어도 container에서 같은 경로의 데이터를 불러와 대응하게 되어 에러가 나지 않음
+일반적으로 노드 단위로 데이터를 공유하는데 
+하지만 이것도 클러스터 단위가 켜져서 여러 노드로 작업하는 경우엔
+hostPath의 경우는 노드가 달라지면 데이터를 공유하지 않게 되어 문제가 됨...
