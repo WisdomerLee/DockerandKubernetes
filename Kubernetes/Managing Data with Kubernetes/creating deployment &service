@@ -1,0 +1,9 @@
+project의 terminal을 켜서
+kubectl get deployments를 실행시켜
+현재 진행중인 배포가 있는지 없는지 확인 함
+
+service.yaml, deployment.yaml파일을 작성하여 kubernetes의 실행 속성을 정의
+
+kubernetes volume을 검색하면 공식 문서에도 나와있음
+
+매우 다양한 볼륨과 드라이버를 지원함
