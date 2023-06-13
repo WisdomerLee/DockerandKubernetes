@@ -1,0 +1,10 @@
+Pod와 Pod간 상호작용을 할 때 내부 로직이 반영된 Pod는 외부에 노출이 되어선 안 됨
+사용자의 입력에 반응해야 하는 것들만 외부로 노출시켜야 함...
+
+같은 Pod에 두었던 것을 다른 Pod로 독립 (일반적으로 pod는 container하나를 갖게 됨)
+
+yaml파일 수정
+
+spec의 container 쪽 name, image를 하나씩만 남겨두기
+
+auth-service쪽의 type을 ClusterIP로 바꾸어 클러스터 내부 네트워크만 쓰도록 설정을 변경
