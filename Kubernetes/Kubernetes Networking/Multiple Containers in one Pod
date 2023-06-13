@@ -5,4 +5,27 @@ Pod의 기능이 동작하려면
 
 kubernetes에서 내부 통신을 쓰려면 인터넷 연결 주소를 환경변수를 추가하여 기기마다 다른 주소를 인식할 수 있게 바꾸고...
 
-user-deployment.yaml
+user-depolyment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      app: users
+  template:
+    metadata:
+      lables:
+        app: users
+    spec:
+      containers:
+        - name: users
+          image: "dockerhub 이미지" #태그를 :latest로 달아두면 이미지를 비교하여 새로 받아오므로(업데이트)배포할 때 넣으면 좋음
+          name: auth
+          image: "dockerhub의 다른 이미지"
+
+
+Pod 하나에 여러 컨테이너가 동작하도록 설정해두었으니 이제 같은 Pod내의 container간 연결만 하면 됨
