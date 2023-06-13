@@ -1,1 +1,6 @@
 Kubernetes Networking
+
+Pod, Container, 외부와 연결하기
+
+Pod-Internal Communication
+Pod-to-Pod Communication
