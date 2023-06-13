@@ -1,0 +1,52 @@
+kubernetes에는 저장소 클래스가 있음
+
+terminal에 
+kubectl get sc로 저장소 클래스를 확인할 수 있음
+
+host-pv.yaml파일에
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: host-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: FileSystem
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data
+    type: DirectoryOrCreate
+
+host-pvc.yaml 파일에도
+
+apiVersion: v1
+kind : PersistentVolumeClaim
+metadata:
+  name: host-pvc
+spec:
+  volumeName: host-pv
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 1Gi
+
+
+kubectl apply -f=host-pv.yaml
+
+kubectl apply -f=host-pvc.yaml
+
+kubectl apply -f=deployment.yaml
+
+kubectl get pv
+영구 볼륨을 볼 수 있음
+kubectl get pvc
+
+영구 볼륨 설정 설명을 볼 수 있음
+
+kubectl get deployments
+
