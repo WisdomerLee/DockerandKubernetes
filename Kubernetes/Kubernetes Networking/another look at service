@@ -1,0 +1,23 @@
+service를 외부에서 접근할 수 있게 하는 것과 해당 IP를 고정으로 만들어야 함
+
+user-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-service
+spec:
+  selector:
+    app: users
+  type: LoadBalancer #만약 어플리케이션이 외부와 소통할 필요가 없으면 ClusterIP(기본값)도 좋음 쿠버네티스가 자동으로 노드로 할당하고 처리하게 되어 내부적인 로직 처리를 Pod 연결을 자동으로 처리해줌
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080 #스크립트에서 사용하는 포트 번호
+ 
+ 
+ kubectl apply -f=user-service.yaml
+ 
+ minikube service user-service
+ 
+ Pod 내부의 container간 통신을 ...
