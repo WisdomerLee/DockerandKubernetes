@@ -1,0 +1,8 @@
+Pod 하나에 여러 container가 있음
+
+Pod의 기능이 동작하려면
+각 container간 통신이 필요함
+
+kubernetes에서 내부 통신을 쓰려면 인터넷 연결 주소를 환경변수를 추가하여 기기마다 다른 주소를 인식할 수 있게 바꾸고...
+
+user-deployment.yaml
