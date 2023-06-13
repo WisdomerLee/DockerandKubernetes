@@ -1,0 +1,26 @@
+프로젝트 내부에
+environment.yaml파일을 만들고
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data-store-env
+data:
+  folder: 'story'
+
+kubectl apply -f=environment.yaml
+
+kubectl get configmap
+
+deployment.yaml파일의
+spec의 container중에
+env:
+  - name: STORY_FOLDER
+    valueFrom:
+      configMapKeyRef:
+        name: data-store-env # environment.yaml의 metadata에 넣은 name
+        key: folder #data쪽에 집어넣은 키 값
+        
+으로 수정하고 
+
+kubectl apply -f=deployment.yaml
