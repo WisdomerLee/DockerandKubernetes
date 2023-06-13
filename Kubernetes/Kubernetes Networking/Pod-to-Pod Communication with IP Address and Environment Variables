@@ -1,0 +1,16 @@
+Pod와 Pod간 네트워크(Cluster내부 네트워크)를 IPAddress를 이용하여 연결하기, 및 환경변수
+
+
+kubectl get services로 나오는 CluserIP를 환경변수에 적용하고 yaml파일에 적용
+
+kubectl apply -f=~.yaml
+
+하지만 매번 cluster ip를 확인하고 적용하는 것은 매우 번거로운 일
+
+쿠버네티스는 내부적으로 서비스 이름을 대문자로 바꾸고 -는 _로 바꾸어 자동으로 생성하는 주소 환경변수가 있음
+만약 app 이름이 auth-service라면
+해당 주소의 환경변수는 AUTH_SERVICE_SERVICE_HOST
+
+yaml파일에 해당 환경변수도 설정하도록 지정하고 , 스크립트에도 지정한 뒤에
+
+yaml파일을 적용하고
