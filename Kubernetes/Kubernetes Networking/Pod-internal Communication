@@ -1,2 +1,27 @@
 
-user-deployment.yaml
+user-depolyment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      app: users
+  template:
+    metadata:
+      lables:
+        app: users
+    spec:
+      containers:
+        - name: users
+          image: "dockerhub 이미지" #태그를 :latest로 달아두면 이미지를 비교하여 새로 받아오므로(업데이트)배포할 때 넣으면 좋음
+          env:
+            - name: AUTH_ADDRESS
+              value: localhost
+          name: auth
+          image: "dockerhub의 다른 이미지"
+
+이렇게 처리하면 같은 환경변수 AUTH_ADDRESS를 쓰는 것중에 해당 container쪽에서는 localhost쪽의 내부 연결을 요청하여 container쪽에 연결을 시도함(외부에 노출되지 않음)
