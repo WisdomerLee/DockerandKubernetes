@@ -1,0 +1,26 @@
+이 볼륨을 쓸
+
+host-pvc.yaml파일을 만들고
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: host-pvc
+spec:
+  volumeName: host-pv #정적인 형태 지정 말고도 동적으로도 지정할 수 있음...
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+배포 yaml 파일 부분을 pv로 연결하도록 설정하여야 함
+
+  container의 volumes부분에서
+  
+  volumes:
+    - name: story-volume
+      persistentVolumeClaim:
+        claimName: host-pvc
+
+클러스터 공용으로 쓸 수 있는 pv를 pod와 연결하도록 설정함
