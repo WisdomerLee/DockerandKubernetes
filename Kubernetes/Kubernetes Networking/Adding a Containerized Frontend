@@ -1,0 +1,12 @@
+쿠버네티스로 frontend를 만들기!!
+
+image로 빌드 하여 구성에 추가하기
+frontend deployment를 kubernetes에 추가
+
+frontend-deployment.yaml파일을 만들고
+frontend-service.yaml파일을 만들기
+
+(docker로)
+frontend의 이미지를 만들고 push한 뒤에...
+
+yaml파일을 적용
