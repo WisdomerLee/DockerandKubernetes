@@ -1,0 +1,19 @@
+Reverse Proxy??
+
+frontend에서 nginx서버로 요청하는 것을
+역으로 다시 보내기
+접속 요청이 특정 형태를 띄고 있을 때 다른 도메인의 다른 호스트로 요청을 재연결을 할 수 있음
+
+nginx.config파일의
+
+proxy_pass : 다른 주소로 전달되어야 함
+proxy_pass nginx서버에 전달할 다른 서버의 주소;
+
+front end의 fetch에 보내는 api 주소가
+
+/api/tasks로 변경되고
+
+이를 다시 이미지를 빌드
+
+해당 접속 proxy_pass 부분에 주소를 http://task-service.default:노출된 port;로 변경 : 쿠버네티스의 요청으로 전달하므로...
+>> yaml파일에 해당 주소를 서비스 주소 입력을 자동 할당되는 주소로 변경하는 것과 같음
