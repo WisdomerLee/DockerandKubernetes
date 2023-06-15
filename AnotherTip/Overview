@@ -1,0 +1,13 @@
+
+Docker와 Container의 내용
+
+Docker는 개발, 배포에서 쓰임
+
+Docker = Images+ Containers
+
+Container간 통신
+
+Docker-Compose : 여러 container로 구성된 Software Architecture
+
+Kubernetes : 여러 기기로 분산된 container들의 집합을 배포할 수 있도록 도와주는 도구
+
